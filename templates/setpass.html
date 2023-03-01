@@ -1,0 +1,6 @@
+<h1>Change password</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Change Password</button>
+</form>

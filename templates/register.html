@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Register</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{form.as_p}}
+        {% if y %}
+            {% for mess in y%}
+                {{mess}}
+            {% endfor %}
+        {% endif %}
+        <input type="submit" name="Create User">
+        <h3>Password Requirements</h3>
+    <ul>
+        <p>Your password can't be too similar to your other personal information.</p>
+        <p>Your password can't be a commonly used password.</p>
+        <p>Your password can't be entirely numeric.</p>
+        <p>Your password must contain at least 8 characters</p>
+    </ul>
+
+    </form>    
+</body>
+</html>

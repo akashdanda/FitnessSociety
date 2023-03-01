@@ -1,0 +1,16 @@
+body{
+    min-height: 100vh;
+    background: linear-gradient(rgb(0, 0, 0),rgb(32, 3, 3));
+    color: rgb(91, 62, 221);
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    display: inline;
+}
+li a{
+    text-align: center;
+}

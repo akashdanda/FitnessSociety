@@ -1,0 +1,7 @@
+<h1>Profile details</h1>
+<img src="{{user.socialprofile.profile_img.url}}" alt="">
+<p> {{user.username}} </p>
+<P>{{user.socialprofile.bio}}</P>
+
+
+<a href="{% url 'prof_update' %}">Update Profile</a>

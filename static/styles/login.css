@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap');
+
+
+body{
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(to right, #1a1a22, #0c0a0b);
+}
+img{
+    width: 100px;
+    height: auto;
+}
+
+#submit_login{
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: rgb(23, 20, 24);
+    color: white;
+    font-size: larger;
+
+}
+
+.login-card{
+    background-color: rgb(30, 30, 37);
+    width: 700px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+}
+
+.login-card a{
+    text-decoration: none;
+}
+
+.login-card a:hover{
+    text-decoration: underline;
+}
+
+.login-card-headerlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.header{
+    margin-bottom: calc(0.6*1rem);
+}
+
+.login-card-headerlogo .logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card-headerlogo h1{
+    color: white;
+    
+}
+
+
+.form-items .form-item{
+    margin: calc(0.4 * 1rem);
+}
+
+
+
+.login-card input[type="text"],
+.login-card input[type="password"]{
+    width: 325px;
+    height: 30px;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(51, 69, 85);
+}
+
+
+#usertext,
+#userpass{
+    padding-left:30px
+}
+
+
+
+.form-items .form-item .form-item-icon{
+    position: relative;
+    opacity: .2;
+    font-size: 1.3rem;
+    top: .30rem;
+    left: 1.9rem;
+
+}
+/*
+.login-card input[placeholder="Enter Username"]
+.login-card input[placeholder="Enter Password"]{
+    position:absolute;
+    top: .43rem;
+    left: 1.8rem;
+}*/
+
+.placeholder {
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    background-color: white;
+    padding: 0 20px;
+  }
+
+.login-card input:hover{
+    background-color: rgb(24, 47, 71);
+    transition: background .5s;
+
+}
+
+
+
+/*
+.login-card .other{
+    max-width: fit-content;
+    display: inline-flex;
+    justify-content: space-evenly;
+} */
+
+.form .loginbutton{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form button{
+    display: flex;
+    justify-content: center;
+    background: black;
+    color: white;
+    padding: 1rem;
+    border-radius: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    outline: none;
+}
+
+.form button:hover{
+    background: rgb(23, 23, 23);
+    transition: background .5s;
+
+}
+
+.login-card .other .checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.login-card .other {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: calc(1rem * .8);
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+    gap: 125px;
+
+}

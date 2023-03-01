@@ -1,0 +1,8 @@
+<h1>All Journal Entries</h1>
+
+<ul>
+    {% for journal in all_journals %}
+    <p>{{journal.today}}</p>
+    <p>{{journal.Upload_Journal}}</p>
+    {% endfor %}
+</ul>

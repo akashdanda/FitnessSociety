@@ -1,0 +1,8 @@
+<h1>Daily Journals</h1>
+<p>Complete Daily Journal</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Submit</button>
+</form>
+<a href="{% url 'all_journals' %}">View All Journals</a>
