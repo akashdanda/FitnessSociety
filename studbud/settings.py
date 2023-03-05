@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'progress',
     'graphs',
     'social_media',
+    'weight',
 ]
 
 MIDDLEWARE = [

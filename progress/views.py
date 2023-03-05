@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import addcalories,addworkouts, journalDaily
 from django.contrib.auth.decorators import login_required
 from .models import dailyJournal
@@ -28,6 +28,7 @@ def workoutprogress(request):
             instance = form.save(commit=False)
             instance.user= request.user 
             instance.save()
+            return redirect("graphs/")
     else:
         form = addworkouts()
     return render(request,'progress/workoutProg.html',{"form":form})
@@ -46,5 +47,5 @@ def journals(request):
     return render(request,'progress/journals/journals.html',{"form":form})
 @login_required
 def alljournals(request):
-    all_journals = dailyJournal.objects.all()
+    all_journals = dailyJournal.objects.filter(user=request.user)
     return render(request,'progress/journals/AllJournals.html',{'all_journals':all_journals})

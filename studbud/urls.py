@@ -23,6 +23,7 @@ from base.views import information,test,home
 from graphs.views import workoutview, graphNavPage
 from social_media.views import Profileviewupt,Profileview
 from django.contrib.auth import views as auth_views
+from weight.views import weight, line_graph
 urlpatterns = [
     path('',home,name='test'),
     path('admin/', admin.site.urls),
@@ -36,11 +37,13 @@ urlpatterns = [
     path('info/',information,name='info'),
     path('logout_user/',logout_user,name='logout'),
     path('test/',test,name="home"),
-    path('graphs/',workoutview,name='workOut_graph'),
+    path('workoutdaily/graphs/',workoutview,name='workOut_graph'),
     path('profileupdate/',Profileviewupt,name='prof_update'),
     path('resetpass/',ResetPassView,name='reset'),
     path('profile_view',Profileview,name='profile'),
     path('graph_nav/',graphNavPage,name="graph_home"),
+    path('userweight/',weight,name="weight"),
+    path('userweight/weight_progress/',line_graph,name='weight_graph'),
     path('setpass/',auth_views.PasswordChangeView.as_view(template_name='setpass.html')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
