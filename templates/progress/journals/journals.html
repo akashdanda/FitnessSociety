@@ -1,8 +1,40 @@
-<h1>Daily Journals</h1>
-<p>Complete Daily Journal</p>
-<form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Submit</button>
-</form>
-<a href="{% url 'all_journals' %}">View All Journals</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'progress/journal.css' %}">
+    <title>Journal Entry</title>
+</head>
+<body>
+    <h1>Daily Journals</h1>
+    <div class="journal_box">
+    
+    <br>
+<div class="journals">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Record Journal</button>
+    </form>
+    <br>
+
+    <br>
+    <form action="{% url 'all_journals' %}" method="get" target="_blank" id="Journals">
+        <button type="submit">All Journals</button>
+     </form>
+     <br>
+     <form action="{% url 'home' %}" method="get" target="_blank" id="Journals">
+        <button type="submit">home</button>
+     </form>
+</div>
+</div>
+
+
+
+    
+</body>
+</html>
+

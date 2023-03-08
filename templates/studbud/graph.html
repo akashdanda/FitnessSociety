@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,6 +8,7 @@
     <!-- semantic UI -->
     <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
     <!--Chart js-->
+    <link rel="stylesheet" type = "text/css" href= "{% static 'graphs/workoutGraph.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
     <!-- jQuery -->
@@ -48,7 +50,7 @@
             }]
         },
         options: {
-          responsive: true,
+          responsive: false,
             maintainAspectRatio: false,
     
             scales: {
@@ -79,7 +81,7 @@
 <body>
   <h1>Workout Analysis</h1>
   <a href="{% url 'home' %}">Home</a>
-  <canvas id="myChart" width="400" height="400"></canvas>
+  <canvas id="myChart" width="800" height="800"></canvas>
   </body>
 </html>
 

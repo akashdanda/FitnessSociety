@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 from django.contrib.auth.models import User
 # Create your models here.
 class calorieTracker(models.Model):
@@ -21,8 +22,8 @@ class workoutModel(models.Model):
 
 class dailyJournal(models.Model):
     user= models.ForeignKey(User,null=True, on_delete=models.CASCADE)
-    Upload_Journal = models.TextField()
-    today= models.DateField(auto_now_add=True)
+    Upload_Journal = models.TextField(default="Record how you are feeling.")
+    today= models.DateField(default=now)
     @property
     def username(self):
         return self.user.username

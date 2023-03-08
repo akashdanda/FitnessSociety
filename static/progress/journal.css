@@ -1,0 +1,46 @@
+.journals,h1{
+    display: block;
+    text-align: center;
+    color: rgb(215, 173, 254);
+}
+
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+body{
+    background-color: black;
+}
+.journals{
+    position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+    background-color: rgb(36, 35, 35);
+    width: 800px;
+    height: 800px;
+}
+
+
+button{
+    display: flex;
+    justify-content: center;
+    background: grey;
+    color: white;
+    padding: 1rem;
+    border-radius: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    outline: none;
+}

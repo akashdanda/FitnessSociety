@@ -11,6 +11,8 @@ class addworkouts(forms.ModelForm):
         exclude = ['user']
 
 class journalDaily(forms.ModelForm):
+    Upload_Journal = forms.CharField(widget=forms.Textarea, label='',initial="Record any thoughts.")
     class Meta:
         model = dailyJournal
         fields = ['Upload_Journal']
+    

@@ -19,21 +19,26 @@ def register(request):
     context={'form':form}
     return render(request,'register.html',context)
 def login_request(request):
+	x=False
+	clicked=False
 	if request.method == "POST":
 		form = AuthenticationForm(request, data=request.POST)
 		if form.is_valid():
 			username = form.cleaned_data.get('username')
 			password = form.cleaned_data.get('password')
 			user = authenticate(username=username, password=password)
+			clicked=True
 			if user is not None:
 				login(request,user)
 				return redirect("home")
+				
 			else:
-				x=messages.error(request,"Invalid username or password.")
+				x=True
+				
 		else:
 			messages.error(request,"Invalid username or password.")
 	form = AuthenticationForm()
-	return render(request=request, template_name="login.html", context={"login_form":form})
+	return render(request=request, template_name="login.html", context={"login_form":form, "x":x, "clicked":clicked})
 def logout_user(request):
 	logout(request)
 	messages.success(request, ('You were logged out'))

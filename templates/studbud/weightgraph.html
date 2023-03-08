@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <h1>Weight progress</h1>
     <div>
         <canvas id="myChart"></canvas>
       </div>
@@ -18,12 +19,13 @@
         const ctx = document.getElementById('myChart');
       
         new Chart(ctx, {
-          type: 'bar',
+          type: 'line',
           data: {
             labels: [{% for weight in weights %}'{{weight.date}}',{% endfor %}],
             datasets: [{
-              label: 'Weight',
-              data: [{% for weight in weights %}'{{weight.curr_weight}}',{% endfor %}],
+              label: 'Weight(lbs)',
+              data: 
+              [{% for weight in weights %}'{{weight.cur_weight}}',{% endfor %}],
               borderWidth: 1
             }]
           },
