@@ -6,6 +6,6 @@ import datetime
 class currentweight(models.Model):
     user= models.ForeignKey(User,null=True,on_delete=models.CASCADE)
     cur_weight = models.DecimalField(decimal_places=3,max_digits=7)
-    date = models.DateField(null=True)
+    date = models.DateField(auto_now_add=True,null=True)
     def __str__(self):
         return "{}".format(self.user)
