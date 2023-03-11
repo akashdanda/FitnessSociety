@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'progress',
     'graphs',
     'social_media',
-    'weight'
+    'weight',
+    'friends',
 
 ]
 

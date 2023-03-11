@@ -21,7 +21,7 @@ from log.views import login_request,register,logout_user,ResetPassView,setPass
 from progress.views import calorieTrackerView, progresshome, workoutprogress,journals,alljournals
 from base.views import information,test,home
 from graphs.views import workoutview, graphNavPage
-from social_media.views import Profileviewupt,Profileview
+from social_media.views import Profileviewupt,Profileview,profile,profile_list
 from django.contrib.auth import views as auth_views
 from weight.views import weight, line_graph
 urlpatterns = [
@@ -45,5 +45,8 @@ urlpatterns = [
     path('userweight/',weight,name="weight"),
     path('userweight/weight_progress/',line_graph,name='weight_graph'),
     path('setpass/',auth_views.PasswordChangeView.as_view(template_name='setpass.html')),
+    path('profile/<int:pk>',profile,name='profiles'),
+    path('profiles_list/',profile_list,name="profile_list"),
+    path('friends/',include('friends.urls',namespace='friends')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

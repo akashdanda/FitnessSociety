@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import addcalories,addworkouts, journalDaily
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 from .models import dailyJournal
+from .utils import calculate_streak
 # Create your views here.
 @login_required
 def calorieTrackerView(request):
@@ -47,5 +49,12 @@ def journals(request):
     return render(request,'progress/journals/journals.html',{"form":form})
 @login_required
 def alljournals(request):
+    user = request.user
+    streak = calculate_streak(user)
     all_journals = dailyJournal.objects.filter(user=request.user)
-    return render(request,'progress/journals/AllJournals.html',{'all_journals':all_journals})
+    return render(request,'progress/journals/AllJournals.html',{'all_journals':all_journals,"streak":streak})
+
+
+
+
+
