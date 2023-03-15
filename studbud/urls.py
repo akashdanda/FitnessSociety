@@ -47,6 +47,5 @@ urlpatterns = [
     path('setpass/',auth_views.PasswordChangeView.as_view(template_name='setpass.html')),
     path('profile/<int:pk>',profile,name='profiles'),
     path('profiles_list/',profile_list,name="profile_list"),
-    path('friends/',include('friends.urls',namespace='friends')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

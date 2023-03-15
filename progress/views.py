@@ -3,6 +3,9 @@ from .forms import addcalories,addworkouts, journalDaily
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import dailyJournal
+from django.utils import timezone
+from .models import workoutModel
+
 from .utils import calculate_streak
 # Create your views here.
 @login_required
