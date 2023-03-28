@@ -10,3 +10,5 @@ def information(request):
 def test(request):
     return render(request, 'test.html',{})
     
+def nav(request):
+    return render(request, 'navigation_page.html',{})

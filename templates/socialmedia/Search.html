@@ -1,0 +1,10 @@
+<h1>Search for Users</h1>
+<form method="GET" action="{% url 'search_profiles' %}">
+    <input type="text" placeholder="Search for Users" name="query" value="{{request.GET.query}}">
+    <button type="submit">Search</button>
+</form>
+
+{% for account in accounts %}
+ <a href="{% url 'profiles' account.id %}">{{account.username}}</a>
+ <br>
+{% endfor %}

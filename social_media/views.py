@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from .forms import ProfileUpdateForm
 from django.contrib.auth.models import User
 from .models import SocialProfile
+from django.db.models import Q
+from django.views import View
 # Create your views here.
 @login_required
 def Profileviewupt(request):
@@ -29,10 +31,20 @@ def profile(request,pk):
     else:
         return redirect('home')
 
-def profile_list(request):
-    if request.user.is_authenticated:
-        profiles= SocialProfile.objects.exclude(user=request.user)
 
-        return render(request,'socialmedia/profile_list.html',{"profiles":profiles})
-    else:
-        redirect('home')
+def profile_search_results(request):
+    return render(request, "socialmedia/profile_list.html",{})
+
+def profile_search_bar(request):
+    context={}
+    query_dict = request.GET
+    query = query_dict.get("query")
+    context= {"query":query}
+    user_profiles = None
+    if query is not None:
+        user_profiles = User.objects.filter(username__icontains=query).distinct()
+        accounts=[]
+        for user in user_profiles:
+            accounts.append(user)
+        context['accounts'] = accounts
+    return render(request, "socialmedia/Search.html",context)

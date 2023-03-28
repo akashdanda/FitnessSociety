@@ -22,5 +22,5 @@ def send_friend_request(request, to_user_id):
 def accept_friend_request(request,requestID):
     FriendRequest = FriendRequest.objects.get(id=requestID)
     if FriendRequest.to_user == request.user:
-        
+        pass
         # add friends to both sides

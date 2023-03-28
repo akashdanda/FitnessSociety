@@ -5,7 +5,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 # Create your models here.
 class SocialProfile(models.Model):
-    user=models.OneToOneField(User, on_delete=models.CASCADE)
+    user=models.OneToOneField(User, on_delete=models.CASCADE,default=User)
     bio = models.TextField(blank=True)
     id = models.BigAutoField(primary_key=True)
     profile_img= models.ImageField(upload_to='static/images/profile_images',default="static/images/profile_images/blankProfile.png")

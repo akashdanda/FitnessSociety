@@ -30,7 +30,7 @@ def login_request(request):
 			clicked=True
 			if user is not None:
 				login(request,user)
-				return redirect("home")
+				return redirect("nav")
 				
 			else:
 				x=True
@@ -39,11 +39,12 @@ def login_request(request):
 			messages.error(request,"Invalid username or password.")
 	form = AuthenticationForm()
 	return render(request=request, template_name="login.html", context={"login_form":form, "x":x, "clicked":clicked})
-def logout_user(request):
-	logout(request)
-	messages.success(request, ('You were logged out'))
-	return redirect('login')
-
+@login_required
+def pagelogout(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect('home')
+    
 def ResetPassView(request):
 	return render(request,"reset.html",{})
 @login_required
