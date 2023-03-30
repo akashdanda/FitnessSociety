@@ -1,0 +1,1 @@
+default_app_config = 'social_media.apps.Social_mediaConfig'

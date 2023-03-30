@@ -39,6 +39,7 @@ def login_request(request):
 			messages.error(request,"Invalid username or password.")
 	form = AuthenticationForm()
 	return render(request=request, template_name="login.html", context={"login_form":form, "x":x, "clicked":clicked})
+
 @login_required
 def pagelogout(request):
     if request.method == "POST":

@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import ProfileUpdateForm
 from django.contrib.auth.models import User
-from .models import SocialProfile
+from .models import SocialProfile, Friend_Request
 from django.db.models import Q
 from django.views import View
 # Create your views here.
@@ -20,14 +20,22 @@ def Profileviewupt(request):
     return render(request,'socialmedia/socialprofileUpt.html',context)
 @login_required
 def Profileview(request):
+    profile = SocialProfile.objects.get(user=request.user)
+    context ={'profile':profile}
     print(request.user.id)
-    return render(request,'socialmedia/socialprofile.html',{})
+    return render(request,'socialmedia/socialprofile.html',context)
 
 def profile(request,pk):
+    receiver=''
+    sender=''
+    if request.method=="POST":
+        sender = request.user
+        receiver = User.objects.get(id=pk)
+        Friend_Request.objects.create(sender=sender, receiver=receiver, status='sent')
 
     if request.user.is_authenticated:
         profile= SocialProfile.objects.get(user_id=pk)
-        return render(request,'socialmedia/profiles.html',{"profile":profile})
+        return render(request,'socialmedia/profiles.html',{"profile":profile,"receiver":receiver,"sender":sender})
     else:
         return redirect('home')
 
@@ -48,3 +56,10 @@ def profile_search_bar(request):
             accounts.append(user)
         context['accounts'] = accounts
     return render(request, "socialmedia/Search.html",context)
+
+
+
+
+    
+
+    # if send create a new object for

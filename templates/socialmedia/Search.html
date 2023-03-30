@@ -1,10 +1,31 @@
-<h1>Search for Users</h1>
-<form method="GET" action="{% url 'search_profiles' %}">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type = "text/css" href= "{% static 'styles/searchUsers.css' %}">
+    <title>User Search</title>
+</head>
+<body>
+    <div class="search_form">
+
+    
+    <h1>Search for Users</h1>
+    <br>
+<form method="GET" action="{% url 'search_profiles' %}" class="search">
     <input type="text" placeholder="Search for Users" name="query" value="{{request.GET.query}}">
-    <button type="submit">Search</button>
+    <br>
+    <button type="submit" class="button-50">Search</button>
 </form>
+
+</div>
 
 {% for account in accounts %}
  <a href="{% url 'profiles' account.id %}">{{account.username}}</a>
  <br>
 {% endfor %}
+    
+</body>
+</html>
