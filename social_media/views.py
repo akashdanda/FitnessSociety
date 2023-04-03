@@ -25,9 +25,11 @@ def Profileview(request):
     print(request.user.id)
     return render(request,'socialmedia/socialprofile.html',context)
 
+@login_required
 def profile(request,pk):
     receiver=''
     sender=''
+    state=''
     if request.method=="POST":
         sender = request.user
         receiver = User.objects.get(id=pk)
@@ -57,9 +59,26 @@ def profile_search_bar(request):
         context['accounts'] = accounts
     return render(request, "socialmedia/Search.html",context)
 
-
+def decline_cancel_request(request,userID):
+    receiver = User.objects.get(id=userID)
+    sender= request.user
+    Friend_Request.objects.delete(sender=sender,receiver=receiver, status='sent')
+    return render(request,"",{})
 
 
     
+
+def accept_requests(request, userID):
+    receiver= request.user
+    all_requests= Friend_Request.objects.filter(receiver=receiver,status='sent')
+    sender = User.objects.get(id=userID)
+    curr_request =Friend_Request.objects.get(receiver=receiver,sender=sender,status='sent')
+    if request.method == "POST":
+        curr_request.status = "accepted"
+        curr_request.save()
+    return render(request,"socialmedia/requests.html",{"curr_request":curr_request,"all_requests":all_requests})
+
+
+
 
     # if send create a new object for
