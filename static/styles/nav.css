@@ -1,7 +1,7 @@
 body{
-    background-color: #111;
+    background-color: aliceblue;
 }
-  ul {
+  .navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -9,11 +9,11 @@ body{
     background-color: #333;
   }
   
-  li {
+  .navbar {
     float: left;
   }
   
-  li a {
+  .navbar a {
     display: block;
     color: white;
     text-align: center;
@@ -22,6 +22,9 @@ body{
   }
   
   /* Change the link color to #111 (black) on hover */
-  li a:hover {
+  .navbar a:hover {
     background-color: #111;
+  }
+  .box{
+    background-color: white;
   }

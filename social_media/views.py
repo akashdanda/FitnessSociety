@@ -29,15 +29,23 @@ def Profileview(request):
 def profile(request,pk):
     receiver=''
     sender=''
-    state=''
-    if request.method=="POST":
-        sender = request.user
-        receiver = User.objects.get(id=pk)
-        Friend_Request.objects.create(sender=sender, receiver=receiver, status='sent')
+    state=True
+    if(len(Friend_Request.objects.filter(sender=request.user,receiver=User.objects.get(id=pk),status="sent"))!=0):
+        state=False
+        curr_req= Friend_Request.objects.filter(sender=request.user,receiver=User.objects.get(id=pk),status="sent")
+        if request.method=="POST":
+            if(curr_req[0].status=="sent"):
+                pass
+                
+    else:    
+        if request.method=="POST":
+            sender = request.user
+            receiver = User.objects.get(id=pk)
+            Friend_Request.objects.create(sender=sender, receiver=receiver, status='sent')
 
     if request.user.is_authenticated:
         profile= SocialProfile.objects.get(user_id=pk)
-        return render(request,'socialmedia/profiles.html',{"profile":profile,"receiver":receiver,"sender":sender})
+        return render(request,'socialmedia/profiles.html',{"profile":profile,"receiver":receiver,"sender":sender,"state":state})
     else:
         return redirect('home')
 
@@ -78,7 +86,9 @@ def accept_requests(request, userID):
         curr_request.save()
     return render(request,"socialmedia/requests.html",{"curr_request":curr_request,"all_requests":all_requests})
 
-
+def friends(request):
+    current_friends = SocialProfile.objects.get(user=request.user).friends.all()
+    return render(request,"socialmedia/friends.html",{"current_friends":current_friends})
 
 
     # if send create a new object for

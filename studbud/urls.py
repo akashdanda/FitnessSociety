@@ -21,7 +21,7 @@ from log.views import login_request,register,pagelogout,ResetPassView,setPass
 from progress.views import calorieTrackerView, progresshome, workoutprogress,journals,alljournals
 from base.views import information,test,home, nav
 from graphs.views import workoutview, graphNavPage
-from social_media.views import Profileviewupt,Profileview,profile, profile_search_bar, profile_search_results, accept_requests
+from social_media.views import Profileviewupt,Profileview,profile, profile_search_bar, profile_search_results, accept_requests, friends
 from django.contrib.auth import views as auth_views
 from weight.views import weight, line_graph
 urlpatterns = [
@@ -50,5 +50,6 @@ urlpatterns = [
     path('profile_results/',profile_search_results,name='results'),
     path('nav/',nav,name='nav'),
     path('friend_requests',accept_requests,name='requests'),
+    path('friends/',friends,name='friends'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

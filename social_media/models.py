@@ -26,11 +26,11 @@ def create_profile(sender,instance,created, **kwargs):
 post_save.connect(create_profile,sender=User)
 CHOICES= [('sent','sent'),
           ('accepted','accepted'),
-          ('unfriend','unfriend')]
+          ('unfriended','unfriended')]
 class Friend_Request(models.Model):
     sender = models.ForeignKey(User,related_name='sender',on_delete=models.CASCADE)
     receiver = models.ForeignKey(User,related_name="receiver",on_delete=models.CASCADE)
-    status = models.CharField(max_length=8,choices=CHOICES,null=True)
+    status = models.CharField(max_length=10,choices=CHOICES,null=True)
 
     
 @receiver(post_save,sender=Friend_Request)
@@ -40,3 +40,11 @@ def friend_status(sender,instance, **kwargs):
     if(instance.status=='accepted'):
         SocialProfile.objects.get(user=sender).friends.add(receiver)
         SocialProfile.objects.get(user=receiver).friends.add(sender)    
+
+@receiver(post_save,sender=Friend_Request)
+def remove_friend(sender,instance,**kwargs):
+    sender= instance.sender
+    receiver=instance.receiver
+    if(instance.status=="unfriended"):
+        SocialProfile.get(user=sender).friends.remove(receiver)
+        SocialProfile.get(user=receiver).friends.remove(sender)
