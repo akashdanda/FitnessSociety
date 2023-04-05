@@ -30,7 +30,32 @@ def profile(request,pk):
     receiver=''
     sender=''
     state=True
-    if(len(Friend_Request.objects.filter(sender=request.user,receiver=User.objects.get(id=pk),status="sent"))!=0):
+    friendState=False
+    a = SocialProfile.objects.get(user=request.user)
+    b = SocialProfile.objects.get(user=User.objects.get(id=pk))
+    #send friend request if not sent
+    # remove friend if sent(sender=request.user) or accepted(either)
+    # decline friend if sent(receiver = request.user)
+    # accept friend request if sent(receiver= request.user)
+    # checks if they are currently friends    
+    if(a.friends.filter(username=User.objects.get(id=pk)).exists()):
+        friendState=True
+        state=False
+        #removing friend after button is pressed
+        if request.method == "POST":
+            a.friends.remove(User.objects.get(id=pk))
+            b.friends.remove(request.user)
+            if(Friend_Request.objects.filter(sender=request.user,receiver=User.objects.get(id=pk)).exists()):
+                l= Friend_Request.objects.get(sender=request.user,receiver=User.objects.get(id=pk),status="accepted")
+                l.status="unfriended"
+
+                l.save()
+            else:
+                l=Friend_Request.objects.get(sender=User.objects.get(id=pk),receiver=request.user,status="accepted")
+                l.status="unfriended"
+                l.save()
+    # checks if friend request is currently sent
+    elif(len(Friend_Request.objects.filter(sender=request.user,receiver=User.objects.get(id=pk),status="sent"))!=0):
         state=False
         curr_req= Friend_Request.objects.filter(sender=request.user,receiver=User.objects.get(id=pk),status="sent")
         if request.method=="POST":
@@ -42,10 +67,10 @@ def profile(request,pk):
             sender = request.user
             receiver = User.objects.get(id=pk)
             Friend_Request.objects.create(sender=sender, receiver=receiver, status='sent')
-
     if request.user.is_authenticated:
         profile= SocialProfile.objects.get(user_id=pk)
-        return render(request,'socialmedia/profiles.html',{"profile":profile,"receiver":receiver,"sender":sender,"state":state})
+        context ={"profile":profile,"receiver":receiver,"sender":sender,"state":state,"friendState":friendState}
+        return render(request,'socialmedia/profiles.html',context)
     else:
         return redirect('home')
 
