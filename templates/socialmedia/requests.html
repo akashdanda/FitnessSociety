@@ -7,14 +7,9 @@
     <title>Friend Requests</title>
 </head>
 <body>
-    {% for curr_request in curr_requests %}
-        
-        <form action="" method="POST">
-            {{curr_request.sender}}
-            {% csrf_token %}
-            <button type="submit">accept</button>
-        </form> 
-
+    <h1>Friend Requests</h1>
+    {% for request in all_requests %}
+      <a href="{% url 'profiles' request.sender.id %}">{{request.sender}}</a> wants to be friends with you! </p>
         <br>
     {% endfor %}
 </body>

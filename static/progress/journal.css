@@ -1,7 +1,7 @@
 .journals,h1{
     display: block;
     text-align: center;
-    color: rgb(215, 173, 254);
+    color: rgb(255, 255, 255);
 }
 
 form
@@ -16,18 +16,9 @@ body{
 }
 .journals{
     position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-    display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-    background-color: rgb(36, 35, 35);
-    width: 800px;
-    height: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 

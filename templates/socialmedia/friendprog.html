@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {{friend.user.username}}'s progress
+    {% if friend_status %}
+    <p>Daily Journals in a row: {{friend_journal_streak}}</p>
+    <p>Average Workout Time: {{time}}</p>
+    <p>Number of Workouts in last 30 days: {{num_workouts}}</p>
+    {% else %}
+    <p>You can't see {{friend.user.username}}'s progress because you aren't friends with them</p>
+    {% endif %}
+</body>
+</html>

@@ -1,24 +1,30 @@
 body{
-    background-color: aliceblue;
+    background-color:black;
 }
   .navbar ul {
     list-style-type: none;
-    margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
   }
   
   .navbar {
-    float: left;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #000000;
   }
   
   .navbar a {
-    display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+  }
+  .navbar li{
+    display: inline;
+    border-right: 1px solid #bbb;
+  }
+  .navbar li:last-child {
+    border-right: none;
+    margin-left: auto;
   }
   
   /* Change the link color to #111 (black) on hover */
@@ -26,5 +32,32 @@ body{
     background-color: #111;
   }
   .box{
-    background-color: white;
+    border-radius: 25px;
+    padding-right: 40px;
+    padding-left: 10px;
+    padding-top: 50px;
+    padding-bottom: 35px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+  .box li{
+    padding-bottom: 20px;
+    font-size: x-large;
+  }
+  .box a{
+    text-decoration: none;
+    color: aliceblue;
+  }
+  .box a:hover{
+    text-decoration: underline;
+    color: #f70202;
+  }
+  ul{
+    list-style-type: none;
   }

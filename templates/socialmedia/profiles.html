@@ -16,21 +16,32 @@
 
 {% endif %}
 <br>
-{% if state%}
-<form action="" method="post">
-    
-    {% csrf_token %}
-    <button type="submit">Send Friend Request</button>
-</form>
-{% else %}
+{% if fstatus %}
 <form action="" method="post">
     
     {% csrf_token %}
     <button type="submit">Remove Friend</button>
 </form>
+{% elif pstatus %}
+<form action="" method="post">
+    
+    {% csrf_token %}
+    <button type="submit">Accept</button>
+</form>
+{% elif Istatus %}
+<form action="" method="post">
+    
+    {% csrf_token %}
+    <button type="submit">Cancel Request</button>
+</form>
+{% else %}
+<form action="" method="post">
+    
+    {% csrf_token %}
+    <button type="submit">Send Request</button>
+</form>
 {% endif %}
-
-
+<h1>{{x}}</h1>
 <a href="#">View {{profile.user.username}}'s progress</a>
 
 </body>

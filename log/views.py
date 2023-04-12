@@ -42,9 +42,8 @@ def login_request(request):
 
 @login_required
 def pagelogout(request):
-    if request.method == "POST":
-        logout(request)
-        return redirect('home')
+    logout(request)
+    return redirect('home')
     
 def ResetPassView(request):
 	return render(request,"reset.html",{})
