@@ -11,10 +11,10 @@
 <body>
     <div class="navbar">
     <ul>
-        <li><a href="{% url 'progress_home' % }">Update Progress</a></li>
-        <li><a href="{% url 'graph_home' % }">View Progress</a></li>
+        <li><a href="{% url 'progress_home' %}">Update Progress</a></li>
+        <li><a href="{% url 'graph_home' %}">View Progress</a></li>
         <li><a href="{% url 'search_profiles' %}">Add Friends</a></li>
-        <li><a href="">Friends</a></li>
+        <li><a href="{% url 'friends' %}">Friends</a></li>
         <li><a href="{% url 'info' %}" >About</a></li>
         <li style="float:right" ><a href="http://127.0.0.1:8000/logout">Logout</a></li>
       </ul>
@@ -22,10 +22,10 @@
     <br>
     <div class="box">
     <ul>
-        <li><a href="{% url 'progress_home' % }">Update Progress</a></li>
-        <li><a href="{% url 'graph_home' % }">View Progress</a></li>
+        <li><a href="{% url 'progress_home' %}">Update Progress</a></li>
+        <li><a href="{% url 'graph_home' %}">View Progress</a></li>
         <li><a href="{% url 'search_profiles' %}">Add Friends</a></li>
-        <li><a href="">Friends</a></li>
+        <li><a href="{% url 'friends' %}">Friends</a></li>
         <li><a href="{% url 'info' %}" >About</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
         

@@ -36,13 +36,14 @@
                 </div>
                 <div class="loginbutton">
                     <input type="submit" value="login" id="submit_login">
-                </div>
-                
-                {% if x %}
+                    {% if x %}
                  <script type="text/javascript">
                     alert('Incorrect username or password');
                  </script>
                 {% endif %}
+                </div>
+                
+            
                 
 
         </form>
@@ -52,7 +53,6 @@
                 <input type="checkbox" id="Remember">
                 <label for="Remember">Remember me</label>
             </div>
-            <a href="{% url 'reset' %}">Reset Password</a>
             <a href="{% url 'home' %}">Home</a>
         </div>
             

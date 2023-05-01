@@ -50,7 +50,7 @@ def profile(request,pk):
     #checks if other sent and pending
     pstatus=False
     #no relation
-    nstatus=False
+    nstatus=True
     g=False
     receiver= request.user
     sender = User.objects.get(id=pk)
@@ -59,7 +59,9 @@ def profile(request,pk):
     #if friends
     if(a.friends.filter(username=User.objects.get(id=pk)).exists()):
         fstatus=True
-        
+        pstatus=False
+        nstatus=False
+        Istatus=False
         if(request.method=="POST"):
             #delete friend
             if(len(Friend_Request.objects.filter(sender=request.user,receiver=User.objects.get(id=pk)))!=0):
@@ -78,16 +80,29 @@ def profile(request,pk):
                 a.save()
                 b.save()
             fstatus=False
+            nstatus=True
+            pstatus=False
+            Istatus=False
     #if sent
     elif(len(Friend_Request.objects.filter(sender=request.user,receiver=User.objects.get(id=pk),status="sent"))!=0):
+        fstatus=False
+        pstatus=False
+        nstatus=False
         Istatus=True
         g=True
         if request.method=="POST":
             Friend_Request.objects.get(sender=request.user,receiver=User.objects.get(id=pk),status="sent").delete()
+            nstatus=True
             Istatus=False
+            pstatus=False
+            fstatus=False
     #if receiving   
+    
     elif(len(Friend_Request.objects.filter(sender=User.objects.get(id=pk),receiver=request.user,status="sent"))!=0):
+        fstatus=False
         pstatus=True
+        nstatus=False
+        Istatus=False
         g=True
         
         if(request.method == "POST"):
@@ -96,21 +111,31 @@ def profile(request,pk):
             a.status="accepted"
             a.save()
             pstatus=False
+            fstatus=True
+            nstatus=False
+            nstatus=False
+
     #if none, send
     else:
         nstatus=True
+        fstatus=False
+        pstatus=False
+        Istatus=False
         if request.method=="POST":
             sender = request.user
             receiver = User.objects.get(id=pk)
             Friend_Request.objects.create(sender=sender, receiver=receiver, status='sent')
             nstatus=False
+            Istatus=True
+            fstatus=False
+            pstatus=False
 
     # checks if friend request is currently sent
                 
 
     if request.user.is_authenticated:
         profile= SocialProfile.objects.get(user_id=pk)
-        context= {"fstatus":fstatus,"Istatus":Istatus,"pstatus":pstatus,"nstatus":nstatus,"profile":profile,"sender":sender,"receiver":receiver}  
+        context= {"fstatus":fstatus,"Istatus":Istatus,"pstatus":pstatus,"nstatus":nstatus,"profile":profile,"sender":request.user,"receiver":User.objects.get(id=pk)}  
         return render(request,'socialmedia/profiles.html',context)
     else:
         return redirect('home')

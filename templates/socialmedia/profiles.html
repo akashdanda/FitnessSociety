@@ -16,25 +16,36 @@
 
 {% endif %}
 <br>
+{{sender}}
+<br>
+{{receiver}}
+
 {% if fstatus %}
+<p>fstatus</p>
 <form action="" method="post">
     
     {% csrf_token %}
     <button type="submit">Remove Friend</button>
 </form>
-{% elif pstatus %}
+{% endif %}
+{% if pstatus %}
+<p>pstatus</p>
 <form action="" method="post">
     
     {% csrf_token %}
-    <button type="submit">Accept</button>
+    <button type="submit">Accept/Reject</button>
 </form>
-{% elif Istatus %}
+{% endif %}
+{% if Istatus %}
+<p>Istatus</p>
 <form action="" method="post">
     
     {% csrf_token %}
     <button type="submit">Cancel Request</button>
 </form>
-{% else %}
+{% endif %}
+{% if nstatus %}
+<p>nstatus</p>
 <form action="" method="post">
     
     {% csrf_token %}

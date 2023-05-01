@@ -36,7 +36,7 @@ def login_request(request):
 				x=True
 				
 		else:
-			messages.error(request,"Invalid username or password.")
+			x=True
 	form = AuthenticationForm()
 	return render(request=request, template_name="login.html", context={"login_form":form, "x":x, "clicked":clicked})
 
