@@ -56,7 +56,7 @@ def alljournals(request):
     streak = calculate_streak(user)
     all_journals = dailyJournal.objects.filter(user=request.user)
     return render(request,'progress/journals/AllJournals.html',{'all_journals':all_journals,"streak":streak})
-
+    
 
 
 

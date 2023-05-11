@@ -106,14 +106,22 @@ def profile(request,pk):
         g=True
         
         if(request.method == "POST"):
+            if 'accept' in request.POST:
             #accept
-            a=Friend_Request.objects.get(sender=User.objects.get(id=pk),receiver=request.user,status="sent")
-            a.status="accepted"
-            a.save()
-            pstatus=False
-            fstatus=True
-            nstatus=False
-            nstatus=False
+                a=Friend_Request.objects.get(sender=User.objects.get(id=pk),receiver=request.user,status="sent")
+                a.status="accepted"
+                a.save()
+                pstatus=False
+                fstatus=True
+                nstatus=False
+                Istatus=False
+            elif 'reject' in request.POST:
+                x=Friend_Request.objects.get(sender=User.objects.get(id=pk),receiver=request.user,status="sent")
+                x.delete()
+                nstatus=True
+                pstatus=False
+                fstatus=False
+                Istatus=False
 
     #if none, send
     else:
@@ -139,7 +147,6 @@ def profile(request,pk):
         return render(request,'socialmedia/profiles.html',context)
     else:
         return redirect('home')
-
 
 def profile_search_results(request):
     return render(request, "socialmedia/profile_list.html",{})
@@ -219,7 +226,7 @@ def friend_progress(request,pk):
         #avg workout time
 
         context={'friend_journal_streak':friend_journal_streak,'time':time,"num_workouts":num_workouts,
-                 "friend":b,"friend_status":friend_status}
+                 "friend":b,"friend_status":friend_status,"person":User.objects.get(id=pk)}
     else:
         context={"friend":b,"friend_status":friend_status}
     return render(request,"socialmedia/friendprog.html",context)

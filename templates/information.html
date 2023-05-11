@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About</title>
     <link rel="stylesheet" type = "text/css" href= "{% static 'styles/info.css' %}">
 </head>
 <body>
@@ -16,25 +16,28 @@
     <div class="sidenav">
         <img class= "image_nav" src="{% static 'images/societyfit.png'%}">
         <a href="{% url 'login' %}" >Login</a>
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'home' %}">Home</a>
       </div>
       
       <!-- Page content -->
       <div class="main">
-        <h1>Mission</h1>
+        <h1>About Us</h1>
+        <h2>Mission</h2>
         <p>The goal of this website is to inspire the youth to become more physically active. 
             This is a social media based fitness website where users can make friends, record their own progress, and see their friends’ progress. 
             Around 20 percent of adolescents are obese and this affects around 15 million children in America. 
             Obesity can lead to severe health conditions such as heart disease, diabetes, hypertension and strokes. 
             Over the years, more children are obese now than ever before. 
             </p>
-            <h1>Features</h1>    
+            <h2>Features</h2>    
         <ul>  <li>Record and view their weight progress</li>
             <li>Track workouts</li>
             <li>Social Network</li>
             <li>Add friends and view their progress</li>
             <li>Data analysis</li>
         </ul>
-        <h1>Contact</h1>
+        <h2>Contact</h2>
         <p>akashdanda06@gmail.com for any concerns or questions</p>
 
         

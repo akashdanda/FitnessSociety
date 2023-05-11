@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+*
 body{
-    background-color:black;
+  background: url(../images/cloud-image.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
+
   .navbar ul {
     list-style-type: none;
     padding: 0;
@@ -9,7 +16,6 @@ body{
   .navbar {
     justify-content: space-between;
     width: 100%;
-    background-color: #000000;
   }
   
   .navbar a {
@@ -17,10 +23,12 @@ body{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-family: 'Poppins', sans-serif;
   }
   .navbar li{
     display: inline;
     border-right: 1px solid #bbb;
+    
   }
   .navbar li:last-child {
     border-right: none;
@@ -29,35 +37,19 @@ body{
   
   /* Change the link color to #111 (black) on hover */
   .navbar a:hover {
-    background-color: #111;
-  }
-  .box{
-    border-radius: 25px;
-    padding-right: 40px;
-    padding-left: 10px;
-    padding-top: 50px;
-    padding-bottom: 35px;
-    background-color: #333;
-    display: flex;
-    justify-content: center;
-    width: fit-content;
-    position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  }
-  .box li{
-    padding-bottom: 20px;
-    font-size: x-large;
-  }
-  .box a{
-    text-decoration: none;
-    color: aliceblue;
-  }
-  .box a:hover{
-    text-decoration: underline;
-    color: #f70202;
+    background-color: #0f0808;
   }
   ul{
     list-style-type: none;
+  }
+  .middle{
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+  vertical-align: middle;
+    color: rgb(255, 255, 255);
+    font-family: 'Poppins', sans-serif;
+    font-size: xx-large;
+    
   }

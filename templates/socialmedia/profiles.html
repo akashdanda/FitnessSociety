@@ -21,7 +21,7 @@
 {{receiver}}
 
 {% if fstatus %}
-<p>fstatus</p>
+
 <form action="" method="post">
     
     {% csrf_token %}
@@ -29,15 +29,20 @@
 </form>
 {% endif %}
 {% if pstatus %}
-<p>pstatus</p>
+
 <form action="" method="post">
     
     {% csrf_token %}
-    <button type="submit">Accept/Reject</button>
+    <button type="submit" name="accept" value="{{ request.id }}">Accept</button>
+    <br>
+    <button type="submit" name="reject" value="{{ request.id }}">Reject</button>
+
 </form>
+
+
 {% endif %}
 {% if Istatus %}
-<p>Istatus</p>
+
 <form action="" method="post">
     
     {% csrf_token %}
@@ -45,7 +50,7 @@
 </form>
 {% endif %}
 {% if nstatus %}
-<p>nstatus</p>
+
 <form action="" method="post">
     
     {% csrf_token %}
@@ -53,7 +58,7 @@
 </form>
 {% endif %}
 <h1>{{x}}</h1>
-<a href="#">View {{profile.user.username}}'s progress</a>
+<a href="{% url 'friend_progress' receiver.id %}">View {{profile.user.username}}'s progress</a>
 
 </body>
 </html>

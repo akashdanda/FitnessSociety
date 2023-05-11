@@ -9,13 +9,20 @@
     <title>User Search</title>
 </head>
 <body>
-    <div class="search_form">
-
-    
+    <div class="navbar">
+        <ul>
+            <li><a href="{% url 'progress_home' %}">Update Progress</a></li>
+            <li><a href="{% url 'graph_home' %}">View Progress</a></li>
+            <li><a href="{% url 'search_profiles' %}">Add Friends</a></li>
+            <li><a href="{% url 'friends' %}">Friends</a></li>
+            <li><a href="{% url 'info' %}" >About</a></li>
+            <li style="float:right" ><a href="http://127.0.0.1:8000/logout">Logout</a></li>
+          </ul>
+        </div>
+    <div class="search_form"> 
     <h1>Search for Users</h1>
-    <br>
 <form method="GET" action="{% url 'search_profiles' %}" class="search">
-    <input type="text" placeholder="Search for Users" name="query" value="{{request.GET.query}}">
+    <input type="text" placeholder="Search for Users" name="query" value="{{request.GET.query}}" class="box">
     <br>
     <button type="submit" class="button-50">Search</button>
 </form>
