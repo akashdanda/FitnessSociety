@@ -55,7 +55,9 @@
     
     {% csrf_token %}
     <button type="submit">Send Request</button>
+    
 </form>
+
 {% endif %}
 <h1>{{x}}</h1>
 <a href="{% url 'friend_progress' receiver.id %}">View {{profile.user.username}}'s progress</a>

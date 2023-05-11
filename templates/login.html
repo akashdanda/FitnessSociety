@@ -39,6 +39,7 @@
                     {% if x %}
                  <script type="text/javascript">
                     alert('Incorrect username or password');
+                    window.location.href="{% url 'login' %}"
                  </script>
                 {% endif %}
                 </div>

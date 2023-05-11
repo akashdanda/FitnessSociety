@@ -83,6 +83,7 @@ def profile(request,pk):
             nstatus=True
             pstatus=False
             Istatus=False
+            
     #if sent
     elif(len(Friend_Request.objects.filter(sender=request.user,receiver=User.objects.get(id=pk),status="sent"))!=0):
         fstatus=False
@@ -96,6 +97,7 @@ def profile(request,pk):
             Istatus=False
             pstatus=False
             fstatus=False
+            
     #if receiving   
     
     elif(len(Friend_Request.objects.filter(sender=User.objects.get(id=pk),receiver=request.user,status="sent"))!=0):
@@ -122,6 +124,7 @@ def profile(request,pk):
                 pstatus=False
                 fstatus=False
                 Istatus=False
+            
 
     #if none, send
     else:
@@ -137,6 +140,7 @@ def profile(request,pk):
             Istatus=True
             fstatus=False
             pstatus=False
+            
 
     # checks if friend request is currently sent
                 
@@ -226,7 +230,7 @@ def friend_progress(request,pk):
         #avg workout time
 
         context={'friend_journal_streak':friend_journal_streak,'time':time,"num_workouts":num_workouts,
-                 "friend":b,"friend_status":friend_status,"person":User.objects.get(id=pk)}
+                 "friend":b,"friend_status":friend_status}
     else:
         context={"friend":b,"friend_status":friend_status}
     return render(request,"socialmedia/friendprog.html",context)
