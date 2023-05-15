@@ -12,7 +12,7 @@
 <body>
     <div class="navbar">
         <ul>
-            <li><a href="{% url 'progress_home' %}">Update Progress</a></li>
+            <li><a href="{% url 'nav' %}">Home</a></li>
             <li><a href="{% url 'graph_home' %}">View Progress</a></li>
             <li><a href="{% url 'search_profiles' %}">Add Friends</a></li>
             <li><a href="{% url 'friends' %}">Friends</a></li>
@@ -21,8 +21,9 @@
           </ul>
         </div>
     <div class="pick">
+        <img src="{% static 'images/Logo.png'%}" alt="Logo">
         <div class="pick1">
-            <a href="{% url 'cal_tracker' %}" class="box1">Weight Tracker</a>
+            <a href="{% url 'weight' %}" class="box1">Weight Tracker</a>
             <a href="{% url 'journal' %}" class="box1">Daily Journal</a>
         </div>
 

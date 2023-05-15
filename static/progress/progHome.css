@@ -2,18 +2,19 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 *
 body{
-    background-color: black;
+  background: radial-gradient(#181818,#000000);
+  background-attachment:fixed;
+  height:100%
     
 }
 
 .pick{
     background: url(../images/blackround.jpg);
-padding-top: 6%;
+padding-top: 2%;
 padding-bottom: 6%;
-padding-left: 4%;
-padding-right: 4%;
+padding-left: 10%;
 width: fit-content;
-margin-left: 38%;
+margin-left: 28%;
 margin-top: 15%;
 }
 .box1{
@@ -68,3 +69,16 @@ margin-top: 15%;
   ul{
     list-style-type: none;
   }
+img{
+  width: 20%;
+  height: auto;
+  margin-bottom: 4%;
+  margin-left: 20%;
+}
+.pick1{
+margin-left: 5%;
+}
+
+.pick2{
+  margin-left: 5%;
+}
