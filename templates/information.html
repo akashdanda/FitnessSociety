@@ -13,28 +13,47 @@
 
     </div>
 
-    <div class="sidenav">
-        <img class= "image_nav" src="{% static 'images/societyfit.png'%}">
-        <a href="{% url 'login' %}" >Login</a>
-        <a href="{% url 'register' %}">Register</a>
-        <a href="{% url 'home' %}">Home</a>
-      </div>
       
       <!-- Page content -->
       <div class="main">
-        <h1>About Us</h1>
-        <h2>Mission</h2>
-        <p class="info">The goal of this website is to inspire the youth to become more physically active. 
+        
+        <img class= "image_nav" src="{% static 'images/workout_person.png'%}">
+        <div class="para">
+          <h1>About Us</h1>
+        <p>The goal of this website is to inspire the youth to become more physically active. 
             This is a social media based fitness website where users can make friends, record their own progress, and see their friends’ progress. 
             Around 20 percent of adolescents are obese and this affects around 15 million children in America. 
             Obesity can lead to severe health conditions such as heart disease, diabetes, hypertension and strokes. 
             Over the years, more children are obese now than ever before. Users are able to record and view their weight progress, track workouts,
             add friends and view their progress, and get visual data representation of own progress.
             </p>
-        <p class="questions"> If you have any questions, email fitnesssociety@gmail.com</p>
-
+            <div class="sidenav">
+              <ul>
+                {% if login %}
+                <div class="li1">
+                  <li><a href="{% url 'nav' %}">Home</a></li>
+                </div>
+                <div class="li1">
+                  <li><a href="{% url 'logout' %}">Logout</a></li>
+                </div>
+                {% elif logout %}
+                <div class="li1">
+                  <li><a href="{% url 'login' %}" >Login</a></li>
+                </div>
+                
+                <div class="li1">
+                  <li><a href="{% url 'register' %}">Register</a></li>
+                </div>
+                
+                <div class="li1">
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                </div>
+                
+                {% endif %}
+              </ul>      
+              </div>
         
-
+          </div>
       </div>
 
 

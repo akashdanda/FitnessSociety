@@ -1,8 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+*
+
 body{
-    background-color: black;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
     color: white;
+    margin-top: 5%;
 }
 form{
     width: 30%;
     height: auto;
+    font-family: 'Poppins', sans-serif;
+}
+.formWorkout{
+    position: relative;
+    left: 35%;
+    
+}
+h1{
+    position: relative;
+    left: 8%;
+    font-family: 'Playfair Display', serif;
+}
+button{
+    background-color: black;
+    color:white;
+    text-decoration: none;
+    border: 1px solid;
+    border-color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin-bottom: 4%;
+}
+
+button:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+}
+a{
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border: 1px solid rgb(255, 255, 255);
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+    padding-right: 4px;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
 }

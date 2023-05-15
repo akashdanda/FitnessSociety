@@ -11,18 +11,19 @@
     <link rel="stylesheet" href="{% static 'progress/workout.css' %}">
 </head>
 <body>
-    
+    <div class="formWorkout">
     </html><h1>Daily Workouts</h1>
-<div id="formWorkout">
-
-
 <form action="" method="post">
     {% csrf_token %}
     {{ form.Quick_Description|as_crispy_field }}
     {{ form.Duration_Hours|as_crispy_field }}
     {{ form.Exercise_Category|as_crispy_field }}
     {{ form.Mood|as_crispy_field }}
-    <button type="submit">Record</button>
+    <div class="butt">
+        <button type="submit">Record</button>
+    </div>
 </form>
+ <a href="{% url 'nav' %}">Home</a>
+    
 </div>
 </body>

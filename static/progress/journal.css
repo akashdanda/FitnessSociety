@@ -1,37 +1,43 @@
-.journals,h1{
-    display: block;
-    text-align: center;
-    color: rgb(255, 255, 255);
-}
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+*
 
-form
-{
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
 body{
-    background-color: black;
+   background: radial-gradient(#181818,#000000);
+   background-attachment:fixed;
+   height:100%;
 }
-.journals{
-    position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+h1{
+    font-family: 'Poppins', sans-serif;
+    color: white;
 }
-
 
 button{
-    display: flex;
-    justify-content: center;
-    background: grey;
-    color: white;
-    padding: 1rem;
-    border-radius: 100px;
+    background-color: black;
+    color:white;
+    text-decoration: none;
+    border: 1px solid;
+    border-color: rgb(63, 28, 28);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+button:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+#br{
+    margin-top: 1%;
+    margin-bottom: 0%;
+}
+
+#br2{
+    margin-top: -5px;
+}
+
+.journals{
+    position: relative;
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border: none;
-    outline: none;
+    margin-top: 15%;
 }

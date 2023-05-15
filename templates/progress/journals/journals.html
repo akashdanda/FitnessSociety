@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,21 +10,21 @@
     <title>Journal Entry</title>
 </head>
 <body>
-    <h1>Daily Journals</h1>
     <div class="journal_box">
-    
-    <br>
+        
 <div class="journals">
+    <h1>Daily Journals</h1>
     <form action="" method="post">
         {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Record Journal</button>
+        <div class="input">
+        {{ form.Upload_Journal|as_crispy_field }}
+    </div>
+        <button id="br" type="submit">Record Journal</button>
     </form>
     <br>
 
-    <br>
     <form action="{% url 'all_journals' %}" method="get" target="_blank" id="Journals">
-        <button type="submit">All Journals</button>
+        <button id="br2" type="submit">All Journals</button>
      </form>
      <br>
      <form action="{% url 'nav' %}" method="get" target="_blank" id="Journals">

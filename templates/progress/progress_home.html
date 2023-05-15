@@ -1,4 +1,38 @@
-<a href="{% url 'cal_tracker' %}">calorieTracker</a>
-<a href="{% url 'journal' %}">Daily Journal</a>
-<a href="{% url 'workout' %}">Daily Workouts</a>
-<a href="{% url 'graph_home' %}">Daily Graphs</a>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Home</title>
+    <link rel="stylesheet" href="{% static 'progress/progHome.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="{% url 'progress_home' %}">Update Progress</a></li>
+            <li><a href="{% url 'graph_home' %}">View Progress</a></li>
+            <li><a href="{% url 'search_profiles' %}">Add Friends</a></li>
+            <li><a href="{% url 'friends' %}">Friends</a></li>
+            <li><a href="{% url 'info' %}" >About</a></li>
+            <li style="float:right" ><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div>
+    <div class="pick">
+        <div class="pick1">
+            <a href="{% url 'cal_tracker' %}" class="box1">Weight Tracker</a>
+            <a href="{% url 'journal' %}" class="box1">Daily Journal</a>
+        </div>
+
+        <br>
+        <div class="pick2">
+            <a href="{% url 'workout' %}" class="box1">Daily Workouts</a>
+            <a href="{% url 'graph_home' %}" class="box1">Daily Graphs</a>  
+        </div>
+
+    </div>  
+</body>
+</html>
+

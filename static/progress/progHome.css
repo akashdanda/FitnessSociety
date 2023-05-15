@@ -1,0 +1,70 @@
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+*
+body{
+    background-color: black;
+    
+}
+
+.pick{
+    background: url(../images/blackround.jpg);
+padding-top: 6%;
+padding-bottom: 6%;
+padding-left: 4%;
+padding-right: 4%;
+width: fit-content;
+margin-left: 38%;
+margin-top: 15%;
+}
+.box1{
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border: 1px solid rgb(255, 255, 255);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.box1:hover{
+    color: black;
+    background-color: white;
+}
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .navbar {
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .navbar a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+  }
+  .navbar li{
+    display: inline;
+    border-right: 1px solid #bbb;
+    
+  }
+  .navbar li:last-child {
+    border-right: none;
+    margin-left: auto;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  .navbar a:hover {
+    background-color: #ffffff;
+    color: black;
+  }
+  ul{
+    list-style-type: none;
+  }
