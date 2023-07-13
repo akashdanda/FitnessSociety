@@ -1,8 +1,28 @@
-<h1>All Journal Entries</h1>
-<p>Streak:{{streak}} </p>
-<ul>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Journals</title>
+    <link rel="stylesheet" type = "text/css" href= "{% static 'progress/allJournals.css' %}">
+</head>
+<body>
+
+    <h1>All Journal Entries</h1>
+    <a href="{% url 'nav' %}">Home</a>
+<p>Streak: {{streak}} 
+    <img src="{% static 'images/fire_emoji.png' %}" alt="">
+</p>
+
     {% for journal in all_journals %}
+    <div class="journals">
     <p>{{journal.today}}</p>
     <p>{{journal.Upload_Journal}}</p>
+</div>
     {% endfor %}
-</ul>
+
+</body>
+</html>
+

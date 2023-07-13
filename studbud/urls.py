@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from log.views import login_request,register,pagelogout,ResetPassView,setPass
-from progress.views import calorieTrackerView, progresshome, workoutprogress,journals,alljournals
+from progress.views import calorieTrackerView, progresshome, workoutprogress,journals,alljournals, my_streak
 from base.views import information,test,home, nav
 from graphs.views import workoutview, graphNavPage
 from social_media.views import Profileviewupt,Profileview,profile, profile_search_bar, profile_search_results, current_requests, friends,friend_progress
@@ -38,12 +38,14 @@ urlpatterns = [
     path('',test,name="home"),
     path('workoutdaily/graphs/',workoutview,name='workOut_graph'),
     path('profileupdate/',Profileviewupt,name='prof_update'),
-    path('resetpass/',ResetPassView,name='reset'),
+    path('reset_pass/',auth_views.PasswordResetView.as_view(template_name="password_reset.html"),name='reset_password'),
+    path('reset_pass_sent/',auth_views.PasswordResetDoneView.as_view(template_name="password_reset_done.html"), name="password_reset_done"),
+    path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name="set-password.html"), name="password_reset_confirm"),
+    path('reset_pass_complete/',auth_views.PasswordResetCompleteView.as_view(template_name="password_reset_complete.html"), name = "password_reset_complete"),
     path('profile_view/',Profileview,name='profile'),
     path('graph_nav/',graphNavPage,name="graph_home"),
     path('userweight/',weight,name="weight"),
     path('userweight/weight_progress/',line_graph,name='weight_graph'),
-    path('setpass/',auth_views.PasswordChangeView.as_view(template_name='setpass.html')),
     path('profile/<int:pk>',profile,name='profiles'),
     #path('profiles_list/',Profile_Search_Class.as_view(),name="profile_list"),
     path('profile_search/',profile_search_bar,name='search_profiles'),
@@ -52,5 +54,6 @@ urlpatterns = [
     path('friend_requests/',current_requests,name='requests'),
     path('friends/',friends,name='friends'),
     path('friend_progress/<int:pk>',friend_progress,name="friend_progress"),
+    path('my_streak',my_streak,name="my_streak")
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

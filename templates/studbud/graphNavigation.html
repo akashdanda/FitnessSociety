@@ -1,15 +1,45 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Graph Navigation</title>
+    <link rel="stylesheet" href="{% static 'progress/graphNav.css' %}">
 </head>
 <body>
-    <a href="{% url 'workOut_graph' %}">workOutProgress</a>
-    <a href="{% url 'all_journals' %}">Journals</a>
-    <a href="">Streaks</a>
-    <a href="{% url 'weight_graph'%}">Weight Progress</a>
+    <div class="navbar">
+        <ul>
+            <li><a href="{% url 'nav' %}">Home</a></li>
+            <li><a href="{% url 'progress_home' %}">Update Progress</a></li>
+            <li><a href="{% url 'search_profiles' %}">Add Friends</a></li>
+            <li><a href="{% url 'friends' %}">Friends</a></li>
+            <li><a href="{% url 'info' %}" >About</a></li>
+            <li style="float:right" ><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div>
+    <div class="pick">
+        <img src="{% static 'images/Logo.png'%}" alt="Logo">
+        <div class="pick1">
+            <a href="{% url 'my_streak' %}" class="box1" id="1">Streaks</a>
+            <br>
+            <br>
+            <a href="{% url 'all_journals' %}" class="box1">Journals</a>
+            <br>
+            <br>
+            <a href="{% url 'workOut_graph' %}" class="box1">workOutProgress</a>
+            <br>
+            <br>
+            <a href="{% url 'weight_graph'%}" class="box1">Weight Progress</a>
+            <br>
+        <br>          
+           
+        </div>
+        
+   
+    </div>
+
 </body>
 </html>

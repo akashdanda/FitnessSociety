@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Comme');
+*
+
+body{
+    background-color: black;
+    color: white;
+}
+h2{
+    font-family: "Roboto";
+}
+P{
+    font-family: "Comme";
+}
+a{
+    color: white;
+}
+a:hover{
+ color: aqua;
+}

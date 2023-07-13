@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaks</title>
+    <link rel="stylesheet" href="{% static 'progress/my_streaks.css' %}">
+</head>
+<body>
+    <h1>My Streaks</h1>
+    <div class="box">
+        <p>Journal Streak: {{journal_streak}} <img src="{% static 'images/white_flame.png' %}" alt=""></p>
+        <p>Number of Workouts in the past 30 days: {{num_workouts}} <img src="{% static 'images/white_flame.png' %}" alt=""></p>
+        <p>Average workout length over the past 30 days: {{time}} <img src="{% static 'images/white_flame.png' %}" alt=""></p>
+    </div>
+   <br>
+    <a href="{% url 'nav' %}">Home</a>
+    <br>
+    <br>
+    <a href="{% url 'progress_home' %}">Back</a>
+
+</body>
+</html>

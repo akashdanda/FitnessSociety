@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Friend Requests</title>
+    <link rel="stylesheet" href="{% static '/styles/cur_friends.css' %}">
 </head>
 <body>
     <h1>Friend Requests</h1>
+    {% if x %}
+     <p>0 pending requests!</p>
+     {% endif %}
+     <a href="{% url 'search_profiles' %}">Add Friends</a>
+     <br>
+     <a href="{% url 'nav' %}">Home</a>
     {% for request in all_requests %}
       <a href="{% url 'profiles' request.sender.id %}">{{request.sender}}</a> wants to be friends with you! </p>
         <br>
     {% endfor %}
+    
 </body>
 </html>

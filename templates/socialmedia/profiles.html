@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,22 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
     </script>
-    <title>Document</title>
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>   
+    <link rel="stylesheet" href="{% static 'styles/prof.css' %}">
+    <title>{{profile.user.username}} View</title>
 </head>
 <body>
-    <h1>Profile</h1>
-
-{% if profile %}
-{{profile.user.username}}'s Profile
-
-{% endif %}
-<br>
-{{sender}}
-<br>
-{{receiver}}
+    <h1> {{profile.user.username}}'s Profile</h1>
 
 {% if fstatus %}
-
+ {{profile.user.username}}'s progress
+<p>Daily Journals in a row: {{friend_journal_streak}}</p>
+    <p>Average Workout Time: {{time}} hours</p>
+    <p>Number of Workouts in last 30 days: {{num_workouts}}</p>
 <form action="" method="post">
     
     {% csrf_token %}
@@ -29,6 +30,7 @@
 </form>
 {% endif %}
 {% if pstatus %}
+<p>You can't see {{profile.user.username}}'s progress because you aren't friends with them.</p>
 
 <form action="" method="post">
     
@@ -42,7 +44,7 @@
 
 {% endif %}
 {% if Istatus %}
-
+<p>You can't see {{profile.user.username}}'s progress because you aren't friends with them.</p>
 <form action="" method="post">
     
     {% csrf_token %}
@@ -50,17 +52,14 @@
 </form>
 {% endif %}
 {% if nstatus %}
-
+<p>You can't see {{profile.user.username}}'s progress because you aren't friends with them.</p>
 <form action="" method="post">
     
     {% csrf_token %}
     <button type="submit">Send Request</button>
-    
 </form>
-
 {% endif %}
-<h1>{{x}}</h1>
-<a href="{% url 'friend_progress' receiver.id %}">View {{profile.user.username}}'s progress</a>
+<a href="{% url 'nav' %}">Home</a>
 
 </body>
 </html>

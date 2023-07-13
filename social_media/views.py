@@ -8,6 +8,7 @@ from django.views import View
 from progress.utils import calculate_streak
 from progress.models import workoutModel
 from django.utils import timezone
+from progress.utils import calculate_streak
 # Create your views here.
 @login_required
 def Profileviewupt(request):
@@ -141,61 +142,51 @@ def profile(request,pk):
             fstatus=False
             pstatus=False
             
-
+    friend_status=False
+    time=0
+    num_workouts=0
+    context={}
     # checks if friend request is currently sent
-                
+    if request.method == "POST":
+        return redirect('profiles',pk=pk)             
+    friend_journal_streak=0
+    if(a.friends.filter(username=User.objects.get(id=pk)).exists()):
+        friend_status=True
+        user2=User.objects.get(id=pk)
+        friend_journal_streak = calculate_streak(user2)
 
+
+
+        data= workoutModel.objects.filter(user=user2)
+    
+        thirty_days_ago = timezone.now() - timezone.timedelta(days=30)
+
+    # Get all the user's workouts in the last 30 days
+        workouts = workoutModel.objects.filter(user=user2, Date__gte=thirty_days_ago)
+        totaltime=0
+        for workout in workouts:
+            totaltime+= workout.Duration_Hours
+    # Count the number of workouts
+        num_workouts = workouts.count()
+        if(num_workouts!=0):
+            time= totaltime/num_workouts
+        else:
+            time = 0
+        time = round(time,2)
+        #what to show:
+        # show journal streak
+        # workouts in the last 30 days
+        #avg workout time
+
+        
     if request.user.is_authenticated:
         profile= SocialProfile.objects.get(user_id=pk)
-        context= {"fstatus":fstatus,"Istatus":Istatus,"pstatus":pstatus,"nstatus":nstatus,"profile":profile,"sender":request.user,"receiver":User.objects.get(id=pk)}  
+        context = {"fstatus":fstatus,"Istatus":Istatus,"pstatus":pstatus,"nstatus":nstatus,"profile":profile,"sender":request.user,"receiver":User.objects.get(id=pk),'friend_journal_streak':friend_journal_streak,'time':time,"num_workouts":num_workouts,
+                 "friend":b,"friend_status":friend_status}  
         return render(request,'socialmedia/profiles.html',context)
     else:
         return redirect('home')
 
-def profile_search_results(request):
-    return render(request, "socialmedia/profile_list.html",{})
-
-def profile_search_bar(request):
-    context={}
-    query_dict = request.GET
-    query = query_dict.get("query")
-    context= {"query":query}
-    user_profiles = None
-    if query is not None:
-        user_profiles = User.objects.filter(username__icontains=query).distinct()
-        accounts=[]
-        for user in user_profiles:
-            accounts.append(user)
-        context['accounts'] = accounts
-    return render(request, "socialmedia/Search.html",context)
-
-def decline_cancel_request(request,userID):
-    receiver = User.objects.get(id=userID)
-    sender= request.user
-    Friend_Request.objects.delete(sender=sender,receiver=receiver, status='sent')
-    return render(request,"",{})
-
-
-    
-def current_requests(request):
-    receiver = request.user
-    all_requests = Friend_Request.objects.filter(receiver=receiver,status="sent")
-    return render(request,"socialmedia/requests.html",{"all_requests":all_requests})
-def accept_requests(request, pk):
-    receiver= request.user
-    sender = User.objects.get(id=pk)
-    curr_request =Friend_Request.objects.get(receiver=receiver,sender=sender,status='sent')
-    if request.method == "POST":
-        curr_request.status = "accepted"
-        curr_request.save()
-    return render(request,"#",{"curr_request":curr_request})
-
-def friends(request):
-    current_friends = SocialProfile.objects.get(user=request.user).friends.all()
-    return render(request,"socialmedia/friends.html",{"current_friends":current_friends})
-
-
-    # if send create a new object for
 def friend_progress(request,pk):
     friend_status= False
     a = SocialProfile.objects.get(user=request.user)
@@ -203,17 +194,17 @@ def friend_progress(request,pk):
     friend_journal_streak=0
     if(a.friends.filter(username=User.objects.get(id=pk)).exists()):
         friend_status=True
+        user2=User.objects.get(id=pk)
+        friend_journal_streak = calculate_streak(user2)
 
-        friend_journal_streak = calculate_streak(user=User.objects.get(id=pk))
 
 
-
-        data= workoutModel.objects.filter(user=request.user)
-        user = request.user
+        data= workoutModel.objects.filter(user=user2)
+    
         thirty_days_ago = timezone.now() - timezone.timedelta(days=30)
 
     # Get all the user's workouts in the last 30 days
-        workouts = workoutModel.objects.filter(user=user, Date__gte=thirty_days_ago)
+        workouts = workoutModel.objects.filter(user=user2, Date__gte=thirty_days_ago)
         totaltime=0
         for workout in workouts:
             totaltime+= workout.Duration_Hours
@@ -234,3 +225,53 @@ def friend_progress(request,pk):
     else:
         context={"friend":b,"friend_status":friend_status}
     return render(request,"socialmedia/friendprog.html",context)
+
+
+def profile_search_results(request):
+    return render(request, "socialmedia/profile_list.html",{})
+
+def profile_search_bar(request):
+    context={}
+    query_dict = request.GET
+    query = query_dict.get("query")
+    context= {"query":query}
+    user_profiles = None
+    if query is not None and query!="":
+        user_profiles = User.objects.filter(username__icontains=query).distinct()
+        accounts=[]
+        for user in user_profiles:
+            if(user!=request.user):
+                accounts.append(user)
+        context['accounts'] = accounts
+    return render(request, "socialmedia/Search.html",context)
+
+def decline_cancel_request(request,userID):
+    receiver = User.objects.get(id=userID)
+    sender= request.user
+    Friend_Request.objects.delete(sender=sender,receiver=receiver, status='sent')
+    return render(request,"",{})
+
+
+    
+def current_requests(request):
+    receiver = request.user
+    x=False
+    all_requests = Friend_Request.objects.filter(receiver=receiver,status="sent")
+    if(len(all_requests)==0):
+        x=True
+    return render(request,"socialmedia/requests.html",{"all_requests":all_requests,"x":x})
+def accept_requests(request, pk):
+    receiver= request.user
+    sender = User.objects.get(id=pk)
+    curr_request =Friend_Request.objects.get(receiver=receiver,sender=sender,status='sent')
+    if request.method == "POST":
+        curr_request.status = "accepted"
+        curr_request.save()
+    return render(request,"#",{"curr_request":curr_request})
+
+def friends(request):
+    current_friends = SocialProfile.objects.get(user=request.user).friends.all()
+    return render(request,"socialmedia/friends.html",{"current_friends":current_friends})
+
+
+    # if send create a new object for

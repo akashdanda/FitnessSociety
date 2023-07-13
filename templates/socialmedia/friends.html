@@ -10,16 +10,19 @@
 </head>
 <body>
     <h1>Current Friends</h1>
+    <a href="{% url 'nav' %}">Home</a>
+    <br>
+    <br>
     {% for friend in current_friends%}
     <div class="Profile">
         <a href="{% url 'profiles' friend.id %}">{{friend}}</a> 
         <br>
     </div>
     {% endfor %}
-
-    <a href="{% url 'search_profiles' %}">Add friends</a>
     <br>
-    <a href="{% url 'requests' %}">Current Requests</a>
+    <a href="{% url 'search_profiles' %}" class="bt">Add friends</a>
+    <br>
+    <a href="{% url 'requests' %}" class="bt">Current Requests</a>
     
 </body>
 </html>

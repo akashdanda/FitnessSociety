@@ -4,11 +4,7 @@
 
 *
 body{
-    background: url(../images/friend_background_search.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: rgb(0, 0, 0);
     position: relative;
     color: black;
 
@@ -61,7 +57,7 @@ input[type="text"]:focus {
 .navbar {
     justify-content: space-between;
     width: 100%;
-    background-color: black;
+    
 }
   
 .navbar a {
@@ -95,8 +91,22 @@ ul{
     display: block;
     background-color: rgb(0, 0, 0);
     border: 1px solid #f7e92d;
-    margin: auto;
-    width: 20%;
     text-align: center;
-    transform: translate(200%,200%);
+    margin-left: 45%;
+    padding: 1%;
+    margin-top: 5%;
+}
+.profiles a{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; 
+    border: 1px solid rgb(0, 0, 0);
+    padding: 2px;
+    border-radius: 10px;
+    color: black;
+    background-color: grey;
+    margin-bottom: 1px;
+}
+.accounts a{
+    color: white;
+    font-family: "Comme";
 }

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Comme');
+*
+body{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+h1{
+    font-size:xx-large;
+}
+
+.para{
+    background-color: rgb(61, 61, 61);
+    text-align: center;
+    width: fit-content;
+    font-family: "Comme";
+    font-size: x-large;
+}
+
+a{
+    text-align: center;
+}
+a{
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border: 1px solid rgb(63,28,28);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 6px;
+    margin-bottom: 1%;
+    font-size: small;
+}
+
+a:hover{
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+}
