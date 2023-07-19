@@ -10,7 +10,7 @@
 <body>
     <h1>Register</h1>
 
-    <form method="POST" action="">
+    <form method="POST" action="{% url 'home' %}">
         {% csrf_token %}
         {{form.as_p}}
         {% if y %}
@@ -18,7 +18,8 @@
                 {{mess}}
             {% endfor %}
         {% endif %}
-        <input type="submit" name="Create User">
+        <button type="submit">Create User</button>
+        
         <h3>Password Requirements</h3>
     <ul>
         <p>Your password can't be too similar to your other personal information.</p>

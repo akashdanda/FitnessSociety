@@ -9,15 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.views import PasswordChangeView
 # Create your views here.
-def register(request):
-    form=CreateUserForm
-    if request.method=='POST':
-        form=CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-		
-    context={'form':form}
-    return render(request,'register.html',context)
+def navredirect():
+	return redirect("nav")
 def login_request(request):
 	x=False
 	clicked=False
@@ -39,7 +32,16 @@ def login_request(request):
 			x=True
 	form = AuthenticationForm()
 	return render(request=request, template_name="login.html", context={"login_form":form, "x":x, "clicked":clicked})
-
+def register(request):
+	context={}
+	form=CreateUserForm
+	if request.method=='POST':
+		form=CreateUserForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect("login")
+	
+	return render(request,'register.html',{"form":form})
 @login_required
 def pagelogout(request):
     logout(request)
