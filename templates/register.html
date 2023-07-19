@@ -10,7 +10,7 @@
 <body>
     <h1>Register</h1>
 
-    <form method="POST" action="{% url 'home' %}">
+    <form method="POST" action="">
         {% csrf_token %}
         {{form.as_p}}
         {% if y %}
