@@ -57,3 +57,4 @@ urlpatterns = [
     path('my_streak',my_streak,name="my_streak")
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.STATIC_ROOT)
