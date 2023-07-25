@@ -1,33 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static '/styles/register.css' %}">
 </head>
 <body>
     <h1>Register</h1>
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{form.as_p}}
-        {% if y %}
-            {% for mess in y%}
-                {{mess}}
-            {% endfor %}
-        {% endif %}
-        <button type="submit">Create User</button>
-        
-        <h3>Password Requirements</h3>
-    <ul>
-        <p>Your password can't be too similar to your other personal information.</p>
-        <p>Your password can't be a commonly used password.</p>
-        <p>Your password can't be entirely numeric.</p>
-        <p>Your password must contain at least 8 characters</p>
-    </ul>
+   
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+            <div class="col-md-6">
+                <label for="fname" class="form-label">First Name</label>
+                {{form.first_name}}
+            </div>
+            <div class="col-md-6">
+                <label for="lname" class="form-label">Last Name</label>
+                {{form.last_name}}
+            </div>
+            <div class="col-6">
+                <label for="username" class="form-label">Username</label>
+                {{form.username}}
+            </div>
+            <div class="col-6">
+                <label for="inputAddress2" class="form-label">E-mail</label>
+                {{form.email}}
+            </div>
+            <div class="col-12">
+                <label for="password" class="form-label">Password</label>
+                {{form.password1}}
+            </div>
+            <div class="col-12">
+                <label for="confirm password" class="form-label">Confirm password</label>
+                {{form.password2}}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Create User</button>
+    </form>
 
-    </form>    
+    <div class="password requirements">
+        <a href="#">password requirements</a>
+        <h3>Password Requirements</h3>
+        
+        <ul>
+            <p>Your password can't be too similar to your other personal information.</p>
+            <p>Your password can't be a commonly used password.</p>
+            <p>Your password can't be entirely numeric.</p>
+            <p>Your password must contain at least 8 characters</p>
+        </ul>
+    </div>    
+
 </body>
 </html>
