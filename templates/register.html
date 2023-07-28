@@ -1,10 +1,11 @@
 {% load static %}
+{% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,17 +46,23 @@
         </div>
         <button type="submit" class="btn btn-primary mt-3">Create User</button>
     </form>
-
-    <div class="password requirements">
-        <a href="#">password requirements</a>
-        <h3>Password Requirements</h3>
+    <button class="btn btn-primary mt-3">Password Requirements</button>
+    <div class="password_requirements">
+        <div class="password-head">
+            <h3>Password Requirements</h3>
+            <button class="btn btn-primary mt-3">&times;</button>
+        </div>
         
-        <ul>
-            <p>Your password can't be too similar to your other personal information.</p>
-            <p>Your password can't be a commonly used password.</p>
-            <p>Your password can't be entirely numeric.</p>
-            <p>Your password must contain at least 8 characters</p>
-        </ul>
+        <div class="password-body">
+            <ul>
+                <p>Your password can't be too similar to your other personal information.</p>
+                <p>Your password can't be a commonly used password.</p>
+                <p>Your password can't be entirely numeric.</p>
+                <p>Your password must contain at least 8 characters</p>
+            </ul>
+
+        </div>
+        
     </div>    
 
 </body>
