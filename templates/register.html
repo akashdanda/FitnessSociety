@@ -1,26 +1,37 @@
 {% load static %}
+{% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
+  <script type="text/javascript" src="{% static '/static/js/registrationHide.js' %}"></script>
     <link rel="stylesheet" href="{% static '/styles/register.css' %}">
+    
 </head>
 <body>
-    <h1>Register</h1>
 
-   
+
+    
+
+    <h1>Fitness Society</h1>
+
+<div id="overlay">
+      <h3>Register</h3>
 <form method="post">
     {% csrf_token %}
     <div class="row">
             <div class="col-md-6">
                 <label for="fname" class="form-label">First Name</label>
-                {{form.first_name}}
+                <div id="firstname">
+                    {{form.first_name}}
+                </div>
+                
             </div>
             <div class="col-md-6">
                 <label for="lname" class="form-label">Last Name</label>
@@ -34,29 +45,191 @@
                 <label for="inputAddress2" class="form-label">E-mail</label>
                 {{form.email}}
             </div>
-            <div class="col-12">
+            <div class="col-6">
                 <label for="password" class="form-label">Password</label>
                 {{form.password1}}
             </div>
-            <div class="col-12">
+            <div class="col-6">
                 <label for="confirm password" class="form-label">Confirm password</label>
                 {{form.password2}}
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Create User</button>
+        <button type="submit" class="btn btn-light" id="butt">Create User</button>
+        <br>
+        <br>
+        <div class="popup" onclick="myFunction()">
+            <button class="btn btn-light" id="butt1">Password Requirements</button>
+          <span class="popuptext" id="myPopup">
+            <ul>
+                <p>Your password can't be too similar to your other personal information.</p>
+                <p>Your password can't be a commonly used password.</p>
+                <p>Your password can't be entirely numeric.</p>
+                <p>Your password must contain at least 8 characters</p>
+            </ul>
+          </span>
+        </div>
+    
+        
     </form>
 
-    <div class="password requirements">
-        <a href="#">password requirements</a>
-        <h3>Password Requirements</h3>
+   
+</div>
+
+
+    
+
+    
+
+
+
+
+
+
+    <style>
+        /* Popup container - can be anything you want */
+        .popup {
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
         
-        <ul>
-            <p>Your password can't be too similar to your other personal information.</p>
-            <p>Your password can't be a commonly used password.</p>
-            <p>Your password can't be entirely numeric.</p>
-            <p>Your password must contain at least 8 characters</p>
-        </ul>
-    </div>    
+        /* The actual popup */
+        .popup .popuptext {
+          visibility: hidden;
+          width: 160px;
+          background-color: #555;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          position: absolute;
+          z-index: 1;
+          padding: 8px 0px;
+          bottom: 125%;
+          left: 50%;
+          margin-left: -80px;
+          font-size: 10px;
+        }
+        ul{
+            margin-right: 20%;
+        }
+        
+        /* Popup arrow */
+        .popup .popuptext::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #555 transparent transparent transparent;
+        }
+        
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+          visibility: visible;
+          -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+        }
+        
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+          from {opacity: 0;} 
+          to {opacity: 1;}
+        }
+        
+        @keyframes fadeIn {
+          from {opacity: 0;}
+          to {opacity:1 ;}
+        }
+        </style>
+        </head>
+        <body style="text-align:center">
+        
+        
+        <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+          var popup = document.getElementById("myPopup");
+          popup.classList.toggle("show");
+        }
+        </script>
+        
+
+ <script>
+    var maxx = document.body.clientWidth;
+var maxy = document.body.clientHeight;
+var halfx = maxx / 2;
+var halfy = maxy / 2;
+var canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+canvas.width = maxx;
+canvas.height = maxy;
+var context = canvas.getContext("2d");
+var dotCount = 200;
+var dots = [];
+// create dots
+for (var i = 0; i < dotCount; i++) {
+  dots.push(new dot());
+}
+
+// dots animation
+function render() {
+  context.fillStyle = "#000000";
+  context.fillRect(0, 0, maxx, maxy);
+  for (var i = 0; i < dotCount; i++) {
+    dots[i].draw();
+    dots[i].move();
+  }
+  requestAnimationFrame(render);
+}
+
+// dots class
+// @constructor
+function dot() {
+  
+  this.rad_x = 2 * Math.random() * halfx + 1;
+  this.rad_y = 1.2 * Math.random() * halfy + 1;
+  this.alpha = Math.random() * 360 + 1;
+  this.speed = Math.random() * 100 < 50 ? 1 : -1;
+  this.speed *= 0.1;
+  this.size = Math.random() * 5 + 1;
+  this.color = Math.floor(Math.random() * 256);
+  
+}
+
+// drawing dot
+dot.prototype.draw = function() {
+  
+  // calc polar coord to decart
+  var dx = halfx + this.rad_x * Math.cos(this.alpha / 180 * Math.PI);
+  var dy = halfy + this.rad_y * Math.sin(this.alpha / 180 * Math.PI);
+  // set color
+  context.fillStyle = "rgb(" + this.color + "," + this.color + "," + this.color + ")";
+  // draw dot
+  context.fillRect(dx, dy, this.size, this.size);
+  
+};
+
+// calc new position in polar coord
+dot.prototype.move = function() {
+  
+  this.alpha += this.speed;
+  // change color
+  if (Math.random() * 100 < 50) {
+    this.color += 1;
+  } else {
+    this.color -= 1;
+  }
+  
+};
+
+// start animation
+render();
+ </script>   
 
 </body>
 </html>
