@@ -4,40 +4,33 @@
 body{
    background: radial-gradient(#181818,#000000);
    background-attachment:fixed;
-   height:100%;
+   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 h1{
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
-button{
-    background-color: black;
-    color:white;
-    text-decoration: none;
-    border: 1px solid;
-    border-color: rgb(63, 28, 28);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
+
+.journal_box{
+    width: 30%;
+    background-color: rgb(190, 188, 188);
+    padding: 2%;
+    border-radius: 15px;
 }
 
-button:hover{
-    background-color: white;
-    color: black;
-    border: 2px solid rgb(0, 0, 0);
-}
+form input{
 
-#br{
-    margin-top: 1%;
-    margin-bottom: 0%;
+    border: 3px solid rgb(63,28,28);
+    
 }
-
-#br2{
-    margin-top: -5px;
-}
-
-.journals{
-    position: relative;
-    text-align: center;
-    margin-top: 15%;
-}
+form input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
